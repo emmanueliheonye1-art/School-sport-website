@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - SportSphere Schools</title>
+    <style>
+        * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+                body {
+                    min-height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: linear-gradient(to right, #063e75, #4479ad);
+                    padding: 20px;
+                }
+
+                .login-container {
+                    width: 100%;
+                    max-width: 420px;
+                }
+
+                .login-box {
+                    background: white;
+                    padding: 35px 30px;
+                    border-radius: 10px;
+                    border: 1px solid #b8cde2;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                }
+
+                .login-box h2 {
+                    text-align: center;
+                    color: #054e96;
+                    margin-bottom: 10px;
+                    font-size: 25px;
+                }
+
+                .login-box p {
+                    text-align: center;
+                    color: #555;
+                    font-size: 14px;
+                    margin-bottom: 25px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                label {
+                    color: #063e75;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #aaa;
+                    border-radius: 5px;
+                    outline: none;
+                    margin-bottom: 12px;
+                }
+
+                input:focus {
+                    border-color: #054e96;
+                    box-shadow: 0 0 5px #4479ad;
+                }
+
+                button {
+                    width: 100%;
+                    padding: 12px;
+                    background: #3f7fc0;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+                button:hover {
+                    background: #063e75;
+                }
+
+                #errorMessage {
+                    color: red;
+                    font-size: 13px;
+                    text-align: center;
+                    margin: 0 0 5px;
+                }
+                body {
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                main {
+                    flex: 1;
+                }
+
+                .back-link {
+                    display: block;
+                    text-align: center;
+                    padding: 15px;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 600;
+                    margin-top: 10px;
+                }
+
+                .back-link:hover {
+                    text-decoration: underline;
+                }
+              
+
+                /* MOBILE RESPONSIVENESS */
+
+                @media (max-width: 480px) {
+
+                    .login-box {
+                        padding: 25px 20px;
+                    }
+
+                    .login-box h2 {
+                        font-size: 21px;
+                    }
+
+                }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <h2>Admin Login</h2>
+
+            <p>Welcome back! Please login to continue.</p>
+
+            <form id="adminForm">
+
+                <label for="adminName">Administrator Name:</label>
+
+                <input 
+                    type="text" 
+                    id="adminName" 
+                    placeholder="Enter your name"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="adminPassword">Password:</label>
+
+                <input 
+                    type="password" 
+                    id="adminPassword" 
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <p id="errorMessage" aria-live="polite"></p>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+
+    </div>
+    <a href="register.html" class="back-link">Student Registration</a>
+
+    <script>
+        // GET HTML ELEMENTS
+
+        const adminForm = document.getElementById("adminForm");
+        const adminName = document.getElementById("adminName");
+        const adminPassword = document.getElementById("adminPassword");
+        const errorMessage = document.getElementById("errorMessage");
+
+        // ADMINISTRATOR LOGIN DETAILS
+        const correctName = "Emmanuel";
+        const correctPassword = "emmasharp123";
+
+        // LOGIN FUNCTION
+        adminForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const enteredName = adminName.value.trim();
+            const enteredPassword = adminPassword.value;
+
+            errorMessage.textContent = "";
+
+            if (!enteredName || !enteredPassword) {
+                errorMessage.textContent = "Please enter both your name and password.";
+                return;
+            }
+
+            // CHECK LOGIN DETAILS
+            if (
+                enteredName.toLowerCase() === correctName.toLowerCase() &&
+                enteredPassword === correctPassword
+            ) {
+                alert("Login successful! Welcome Administrator.");
+                window.location.href = "admin.html";
+            } else {
+                errorMessage.textContent = "Incorrect name or password. Try again.";
+                adminPassword.value = "";
+                adminPassword.focus();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator</title>
+    <style>
+        *{
+             font-family: Arial, Helvetica, sans-serif;  
+
+        }
+
+        #header{
+           position: sticky; 
+           width: 100%;
+           padding: 0 0 10px;
+           z-index: 1000; 
+            top: 0; 
+            background: white;
+        }
+           #logo{
+         height: 100px;
+            width: 100px;
+            padding: 10px;
+            /* margin-left: 10px; */
+      }
+        .brand {
+             display: flex;
+             align-items: center;
+             /* text-align: right  ; */
+             justify-content: space-between;
+             gap: 15px;
+             border-bottom: 2px solid #054e96;
+             padding: 0 15px;
+             flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .brand h2{
+            color: #054e96;
+            /* display: block; */
+        }
+         #name{
+            /* width: 50%; */
+            /* display: inline; */
+            text-align: left;
+            /* margin: 0; */
+            /* gap: 90px; */
+            flex: 1;
+        }
+         #sh{
+            /* padding-left: 15px; */
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            letter-spacing: 1.5px;
+            /* margin-bottom: 20px;  */
+            display: block;
+         }
+           .nav{
+             display: flex;
+             align-items: center;
+             gap: 20px;
+             /* flex-wrap: wrap; */
+        }
+        .nav a{
+            text-decoration: none;
+            font-weight: 600;
+            color:black;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease ;
+            
+        }
+        .nav a:hover{
+            background:  #4479ad;
+            transform: scale(0.9);
+            color: white;
+        }
+        #adminStudents {
+                width: 100%;
+                max-width: 900px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 1px solid #4479ad;
+                border-radius: 8px;
+            }
+
+            #adminStudents h2 {
+                text-align: center;
+                color: #054e96;
+                margin-bottom: 20px;
+            }
+
+            #adminStudentList {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 15px;
+            }
+
+            .user-card {
+                padding: 15px;
+                border: 1px solid #b8cde2;
+                border-radius: 8px;
+                background: #f4f8fc;
+                overflow-wrap: anywhere;
+            }
+
+            .user-card p {
+                margin: 8px 0;
+                color: #063e75;
+            }
+
+            .edit-btn, .delete-btn {
+                display: inline-block;
+                margin: 5px;
+                padding: 8px 20px;
+                cursor: pointer;
+                background: #7daad6;
+                border-radius: 8px;
+                border: none;
+                transition: all 0.3s ease ;
+            }
+
+            .edit-btn:hover, .delete-btn:hover {
+                background: #4479ad;
+                color: white;                            
+                transform: scale(0.9);
+
+            }
+            .logout-container {
+                display: flex;
+                /* gap: 15px; */
+                justify-content: center;
+                margin-top: 30px;
+                 margin-bottom: 30px;
+            }
+            #logoutBtn {
+                background-color: red;
+                color: white;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+             
+            }
+
+            #logoutBtn:hover {
+                background-color: darkred;
+            }
+    </style>
+</head>
+<body>
+    <nav id="header">
+        <div class="brand">
+            <img src="schlogo.png" alt="" id="logo">
+            <h2 id="name">SportSphere Schools  <br><small id="sh">Shaping bright futures</small></h2>
+         <div class="nav">
+            <a href="school.html">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#sports">Sports</a>
+            <a href="#contact">Registration</a>
+        </div>
+        </div>
+    </nav>
+    <section id="adminStudents">
+
+        <h2>Registered Students</h2>
+
+        <div id="adminStudentList">
+
+        </div>
+
+    </section>
+    <div class="logout-container">
+    <button id="logoutBtn">Logout</button>
+    </div>
+    <script>
+        // STORAGE KEY
+            const STORAGE_KEY = "sportsphereStudents";
+
+            // GET ADMIN HTML ELEMENT
+            const adminStudentList = document.getElementById("adminStudentList");
+
+
+            // GET STUDENTS FROM LOCAL STORAGE
+            function getStudents() {
+
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+            }
+            
+
+            // SAVE STUDENTS
+            function saveStudents(students) {
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+
+            }
+
+
+            // DISPLAY STUDENTS
+            function displayAdminStudents() {
+
+                const students = getStudents();
+
+                adminStudentList.innerHTML = "";
+
+
+                if (students.length === 0) {
+
+                    adminStudentList.textContent = "No students have registered yet.";
+
+                    return;
+
+                }
+
+
+                students.forEach(student => {
+
+                    // CREATE STUDENT BOX
+                    const box = document.createElement("div");
+
+                    box.className = "user-card";
+
+
+                    // STUDENT DETAILS
+                    const name = document.createElement("p");
+
+                    name.textContent = "Name: " + student.name;
+
+
+                    const email = document.createElement("p");
+
+                    email.textContent = "Email: " + student.email;
+
+
+                    const studentClass = document.createElement("p");
+
+                    studentClass.textContent = "Class: " + student.studentClass;
+
+
+                    const course = document.createElement("p");
+
+                    course.textContent = "Sport Activity: " + student.course;
+
+
+                    // EDIT BUTTON
+                    const editButton = document.createElement("button");
+
+                    editButton.textContent = "Edit";
+
+                    editButton.className = "edit-btn";
+
+                    editButton.addEventListener("click", function() {
+
+                        editStudent(student.id);
+
+                    });
+
+
+                    // DELETE BUTTON
+                    const deleteButton = document.createElement("button");
+
+                    deleteButton.textContent = "Delete";
+
+                    deleteButton.className = "delete-btn";
+
+                    deleteButton.addEventListener("click", function() {
+
+                        deleteStudent(student.id);
+
+                    });
+
+
+                    // ADD EVERYTHING TO THE BOX
+                    // box.appendChild(name);
+
+                    // box.appendChild(email);
+
+                    // box.appendChild(studentClass);
+
+                    // box.appendChild(course);
+
+                    // box.appendChild(editButton);
+
+                    // box.appendChild(deleteButton);
+
+                    // CREATE BUTTON CONTAINER
+                const buttonContainer = document.createElement("div");
+
+                buttonContainer.className = "button-container";
+
+                // ADD BUTTONS TO THE CONTAINER
+                buttonContainer.appendChild(editButton);
+
+                buttonContainer.appendChild(deleteButton);
+
+
+                // ADD EVERYTHING TO THE BOX
+                box.appendChild(name);
+
+                box.appendChild(email);
+
+                box.appendChild(studentClass);
+
+                box.appendChild(course);
+
+                box.appendChild(buttonContainer);
+
+                    // DISPLAY BOX
+                    adminStudentList.appendChild(box);
+
+                });
+
+            }
+
+
+            // EDIT STUDENT
+            function editStudent(id) {
+
+                let students = getStudents();
+
+                const student = students.find(s => s.id === id);
+
+                if (!student) return;
+
+
+                const newName = prompt("Enter new name:", student.name);
+
+                if (newName === null) return;
+
+
+                const newEmail = prompt("Enter new email:", student.email);
+
+                if (newEmail === null) return;
+
+
+                const newClass = prompt("Enter new class:", student.studentClass);
+
+                if (newClass === null) return;
+
+
+                const newCourse = prompt("Enter new sport:", student.course);
+
+                if (newCourse === null) return;
+
+
+                if (!newName.trim() || !newEmail.trim()) {
+
+                    alert("Name and email cannot be empty.");
+
+                    return;
+
+                }
+
+
+                // UPDATE DETAILS
+                student.name = newName.trim();
+
+                student.email = newEmail.trim();
+
+                student.studentClass = newClass.trim();
+
+                student.course = newCourse.trim();
+
+
+                saveStudents(students);
+
+                displayAdminStudents();
+
+                alert("Student details updated successfully!");
+
+            }
+
+
+            // DELETE STUDENT
+            function deleteStudent(id) {
+
+                const confirmDelete = confirm("Are you sure you want to delete this student?");
+
+                if (!confirmDelete) return;
+
+
+                let students = getStudents();
+
+                students = students.filter(student => student.id !== id);
+
+
+                saveStudents(students);
+
+                displayAdminStudents();
+
+                alert("Student deleted successfully!");
+
+            }
+
+
+            // DISPLAY STUDENTS WHEN ADMIN PAGE LOADS
+            displayAdminStudents();
+
+
+            // UPDATE WHEN STUDENT REGISTERS IN ANOTHER TAB
+            window.addEventListener("storage", function(event) {
+
+                if (event.key === STORAGE_KEY) {
+
+                    displayAdminStudents();
+
+                }
+
+            });
+            const logoutBtn = document.getElementById("logoutBtn");
+
+            logoutBtn.addEventListener("click", function() {
+                window.location.href = "admin-login.html";
+            });
+    </script>
+</body>
+</html>

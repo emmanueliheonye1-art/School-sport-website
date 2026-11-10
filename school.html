@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportSphere Schools | Sports Registration</title>
+    <link rel="stylesheet" href="bootstrap.css">
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: Arial, Helvetica, sans-serif;  
+          
+        }
+        main{
+            padding:0 20px 20px;
+            /* background: #f2f2f2; */
+        }
+        .brand {
+             display: flex;
+             align-items: center;
+             text-align: right  ;
+             gap: 30px;
+             border-bottom: 2px solid #054e96;
+               font-family: Arial, Helvetica, sans-serif;
+        }
+        .brand h2{
+            color: #054e96;
+        }
+
+        #header{
+           position: sticky; 
+           width: 100%;
+           height: auto;
+           padding: 10px 0;
+           z-index: 1000; 
+            top: 0; 
+            background: white;
+            margin-bottom: 20px;
+        }
+        #logo{
+         height: 100px;
+            width: 100px;
+            padding: 10px;
+            margin-left: 10px;
+      }
+         #name{
+            width: 50%;
+            display: inline;
+            text-align: left;
+            margin: 0;
+             /* background: linear-gradient(90deg, #00ff88,#0066ff);  */
+        }
+         #sh{
+            padding-left: 15px;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px; 
+         }
+           .nav{
+             display: flex;
+             align-items: center;
+             gap: 15px;
+        }
+        .nav a{
+            text-decoration: none;
+            font-weight: 600;
+            color:black;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.5s ease 0.1s;
+        }
+        .nav a:hover{
+            background:  #4479ad;
+            /* transition: all 1.5s ease; */
+            transform: scale(0.9);
+            color: white;
+        }
+        
+        .hero{
+            margin-top: 20px;
+            display: flex;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.527);
+        }
+        .hero-text{
+            background: linear-gradient(to right, #001f3f,#1a5692 ) ;
+            color: white;
+            width: 60%;
+            height: 350px;
+            padding: 15px;
+
+        }
+        .hero-text p{
+            text-align: center;
+            font-style: italic;
+            color: cyan;
+            padding: 20px;
+        }
+        .hero-text h1{
+            padding: 10px 0 20px 70px;
+            font-size: 60px;
+            color: white;
+        }
+        .hero-text u{
+            color: rgba(0, 255, 255, 0.589);
+        }
+        .hero-text span {
+            padding-left: 155px;
+            display: block;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .hero-text .span{
+            padding-top: 30px;
+        }
+        .hero-text #span2{
+             padding-left: 155px;
+        }
+        .balls{
+            width: 500px;
+            /* width: 50%; */
+            height: 350px;
+        }
+        #about{
+            margin-top: 40px;
+            background: white;
+            padding: 40px 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.527);
+        }
+        #about #img{
+            width: 100%;
+            height: 80px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.527);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        #about h2{
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4479ad;
+        }
+        #about h3{
+            margin: 25px 0 40px;
+            text-align: center;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 7px;
+        }
+        #about p{
+            padding: 15px;
+        }
+        .about-card img{
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            /* box-shadow: 0 0 20px #1c66b1; */
+            border-radius: 8px;
+        }
+        .about-card p{
+            padding: 10px 0;
+            margin-top: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .about-container{
+            display: flex;
+            gap: 50px;
+            margin-left: 30px;
+            text-align: center;
+            width: 90%;
+        }
+        .about-card{
+            width: auto;
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.5s ease 0.1s;
+            /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.269); */
+             /* box-shadow: 0 0 15px #1c66b1; */
+        }
+        .about-card:hover{
+            /* box-shadow: 0 0 15px #1c66b1; */
+            transform: translateY(-5px);
+            border-left: 5px solid #4479ad;
+        }
+        #sports{
+            padding: 20px;
+            margin: 80px 0 ;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.527);
+        }
+        #sports h2{
+            border-bottom: 2px solid #4479ad;
+            margin: 20px;
+        }
+        #sports p{
+            margin: 20px;
+            padding-left: 20px;
+            font-style: italic;
+        }
+        #cards{
+            padding-right:30px;
+            text-align: center;
+            border-radius: 8px;
+            padding-bottom: 20px;
+        }
+        #cards p{
+            padding-left: 0;
+        }
+        .card{
+            gap: 30px;
+            /* box-shadow: 0 0 15px #1c66b1; */
+            padding: 15px;
+            border-radius: 8px;
+            padding-bottom: 30px;
+        }
+        .card h4{
+            letter-spacing: 7px;
+            padding-top: 10px;
+        }
+        .card img{
+            height:250px;
+            width: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        button a{
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: all 0.5s ease 0.1s;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        button:hover{
+            color: white;
+            background: #4479ad;
+            border-radius: 5px;
+        }
+        
+        button{
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 10px 0;
+            border-radius:5px ;
+            transition: all 0.5s ease 0.1s;
+            border: 1px solid #4479ad;
+        }
+        #contact{
+         background: linear-gradient(90deg, #06305a,#176bc0); 
+            color: rgba(255, 255, 255, 0.689);
+            padding: 30px ;
+        }
+        #contact h2{
+            margin: 10px;
+            color: white;
+        }
+        #contact #contp{
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        #scheme{
+            display: flex;
+        }
+        #scheme img{
+            height: 70px;
+            width: 70px;
+            margin-top: 12px;
+        }
+        #contact a{
+            display: block;
+            color: rgba(255, 255, 255, 0.689) ;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        #contact a:hover{
+            color: rgba(0, 255, 255, 0.831);
+            text-decoration: underline;
+            transition: all 0.5s ease 0.2s;
+        }
+        .contact{
+            display: flex;
+        }
+        #info,#link,#scheme p{
+            margin-left: 40px;
+        }
+        #info h4, #infop{
+            margin-top: 10px;
+        }
+        
+        
+        footer{
+            color: black;
+            padding: 30px;
+            border-top: 1px solid #f2f2f2;
+            text-align: right;
+            margin-top: 30px;
+        }
+
+
+        @media (max-width: 768px) {
+                /* Stop overflow */
+
+                main{ 
+                    padding: 0;
+                    width: 100%;
+                     }
+                
+                /* HEADER: logo+name line 1, nav line 2 as buttons */
+                #header{ 
+                    padding: 0; 
+                    position: sticky; 
+                    top: 0; 
+                }
+                .brand{
+                    flex-wrap: wrap;
+                    gap: 0;
+                    padding: 8px 10px;
+                    align-items: center;
+                }
+                #logo{ 
+                    height: 45px; 
+                    width: 45px; 
+                    margin: 0; 
+                    padding: 2px; 
+                }
+                #name{ 
+                    width: auto; 
+                    flex: 1; 
+                    font-size: 16px; 
+                    text-align: left; 
+                }
+                
+                #sh{ 
+                    font-size: 10px; 
+                    padding: 0; 
+                    margin: 0; 
+                    letter-spacing: 1px; 
+                }
+                .nav{
+                    width: 100%;
+                    justify-content: space-evenly;
+                    gap: 12px;
+                    display: flex;
+                    margin-top: 8px;
+                    padding-top: 8px;
+                    border-top: 1px solid #e0e0e0;
+                    flex-wrap: rap;
+                    align-items: center;
+                }
+                .nav a{
+                    font-size: 11px;
+                    padding: 8px 10px;
+                    background: #f0f6ff;
+                    border: 1px solid #054e96;
+                    border-radius: 20px;
+                    color: #054e96;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                    /* margin-right: 20px; */
+                }
+
+                /* HERO */
+                .hero{ 
+                    flex-direction: column; 
+                    box-shadow: none; 
+                }
+                .hero-text{
+                    width: 100%;
+                    height: auto;
+                    padding: 25px 15px;
+                    text-align: center;
+                }
+                .hero-text h1{ 
+                    font-size: 28px; 
+                    padding: 10px 0; 
+                    text-align: center; 
+                }
+                .hero-text p{ 
+                    padding: 10px; 
+                }
+                .hero-text span, .hero-text #span2, .hero-text .span{
+                    padding: 0 ;
+                    display: inline;
+                    text-align: center;
+                }
+                .balls { 
+                    width: 100%; 
+                    height: 200px; 
+                    object-fit: cover; 
+                }
+
+                /* ABOUT & SPORTS - SMALL CARDS SIDE BY SIDE */
+                #about, #sports{ 
+                    margin: 10px; 
+                    padding: 15px; 
+                    width: auto; 
+                }
+                .about-container, #cards{
+                    /* flex-direction: row; */
+                    /* flex-wrap: nowrap; */
+                    gap: 8px;
+                    margin-left: 0;
+                    padding: 0 0 10px 0;
+                    justify-content: space-around;
+                }
+                .about-card{
+                    width: 30%;
+                }
+                .about-card, .card{
+                    /* min-width: auto;
+                    max-width: auto; */
+                    width: 30%;
+                    padding: 8px;
+                }
+                .about-card img, .card img{
+                    width: 100%;
+                    height: 90px;
+                    object-fit: cover;
+                }
+                .about-card p, .card p, .card h4{
+                    font-size: 10px;
+                    letter-spacing: 1px;
+                    padding: 5px 0;
+                    margin: 5px 0;
+                }
+                .about-card p{ 
+                    font-weight: 600; 
+                }
+                .card p{
+                    padding: 0;
+                }
+                button a{ 
+                    font-size: 10px; 
+                    padding: 5px; 
+                }
+                button{ 
+                    padding: 5px 0; 
+                }
+                #about #img{ 
+                    height: 50px; 
+                }
+
+                /* CONTACT */
+                #contact{ 
+                    padding: 20px 15px; 
+                }
+                .contact, #scheme{ 
+                    flex-direction: column; 
+                }
+                #scheme img{ 
+                    height: 50px; 
+                    width: 50px; 
+                }
+                #scheme p, #info, #link{ 
+                    margin-left: 0; 
+                    margin-top: 15px; 
+                }
+                #info p, #scheme p{ 
+                    word-break: break-word; 
+                }
+                footer{ 
+                    text-align: center; 
+                    padding: 15px; 
+                }
+                #img{
+                    display: none;
+                }
+                /* STACK GALLERY AND SPORTS CARDS ON PHONES */
+                .about-container,
+                #cards {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    width: 100%;
+                    margin: 0;
+                    padding: 10px;
+                    box-sizing: border-box;
+                }
+
+                .about-card,
+                .card {
+                    width: 100%;
+                    max-width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .about-card img,
+                .card img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                }
+            }
+
+        @media screen and (min-width: 769px) and (max-width: 1400px) {
+
+            main {
+                width: 100%;
+                max-width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            /* GALLERY AND SPORTS CARDS */
+            .about-container,
+            #cards {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 15px;
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 10px 0;
+                box-sizing: border-box;
+            }
+
+            .about-card,
+            .card {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* IMAGES */
+            .about-card img,
+            .card img {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: 180px;
+                object-fit: cover;
+                box-sizing: border-box;
+            }
+
+            /* HERO SECTION */
+            .hero {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .hero-text {
+                min-width: 0;
+            }
+
+            .balls {
+                max-width: 40%;
+                height: auto;
+            }
+        }
+
+        /* @media  (min-width:769px) {
+            .about-container, #cards{
+                     flex-direction: row; 
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    gap: 8px;
+                    margin-left: 0;
+                    padding: 0 0 10px 0;
+                    justify-content: flex-start;
+                }
+        } */
+    </style>
+</head>
+<body>
+    <nav id="header">
+        <div class="brand">
+         <img src="schlogo.png" alt="" id="logo">
+         <h2 id="name">SportSphere Schools  <br><small id="sh">Shaping bright futures</small></h2>
+         <div class="nav">
+            <a href="school.html">Home</a>
+            <a href="#about">About </a>
+            <a href="#sports">Sports</a>
+            <a href="#contact">Contact</a>
+            <a href="register.html">Register</a>
+        </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="hero">
+            <div class="hero-text">
+            <p>SportSphere Schools </p>
+            <h1><u>Sport Registration</u></h1>
+            <div class="span">
+                <span>Register now and discover more exciting activities,</span>
+                <span id="span2"> - Develop skills to represent SportSphere Schools -</span>
+            </div>
+            </div>
+            <img src="balls.png" alt="" class="balls">
+        </article>
+            <section id="about">
+                <img src="pic.png" alt="" id="img">
+                <h2>About Us</h2>
+                <p>Here at <strong>SportSphere Schools</strong> we offer unique training, covering all aspects of education for all our wards. Sports are never an exception because we deal on interesting sport activities in other to train our students to develop skills and to become future athletes.</p>
+                <h3 id="gallery">GALLERY</h3>
+                <div class="about-container">
+                    <div class="about-card">
+                        <img src="field.png" alt="">
+                        <p>Students playing football</p>
+                    </div>
+                    <div class="about-card">
+                        <img src="bcourt.png" alt="">
+                        <p>Students playing basketball</p>
+                    </div>
+                    <div class="about-card">
+                        <img src="vcourt.png" alt="">
+                        <p>Students playing volleyball</p>
+                    </div>
+                </div>
+            </section>
+            
+        <section id="sports">
+            <h2>Sports Activities</h2>
+            <p>Select your sport activity and register :</p>
+            
+            <div class="about-container" id="cards">
+
+                <div class="card">
+                    <img src="football.png" alt="" >
+                    <h4>Football</h4>
+                    <p>Generate more skills and improve <br>teamwork  on the field </p>
+                    <button><a href="register.html">Register Now</a></button>
+                </div>
+           
+                <div class="card">
+                    <img src="basketball.png" alt="">
+                     <h4>Basketball</h4>
+                    <p>Improve your skills and confidence  on the court </p>
+                    <button><a href="register.html">Register Now</a></button>
+                </div>
+
+                <div class="card">
+                    <img src="volleyball.png" alt="">
+                    <h4>Volleyball</h4>
+                    <p>Build strength and better sportsmanship on the court</p>
+                    <button><a href="register.html">Register Now</a></button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+        <div id="contact">
+            <div>
+            <h2>Contact Us</h2>
+            <p id="contp">Contact us for more info</p>
+            </div>
+            <section class="contact">
+                <div id="scheme">
+                    <img src="schlogo.png" alt="">
+                    <p>SportSphere Schools is an institution that offers 100% <br> good academic scheme enabling every student to ascend into <br> higher levels of academic and moral excellence in the service <br> of our Lord Jesus Christ. </p>
+                </div>
+
+                <div id="info">
+                    <h4>Contact Information</h4>
+                    <p>No.5 Samphino Road, Kpansia, Yenagoa, Bayelsa State.</p>
+                    <p>+2348035467366</p>
+                    <p>sportsphereschools@gmail.com</p>
+                </div>
+
+                <div id="link">
+                    <h4>Quick Links </h4>
+                    <a href="school.html">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="register.html">Register</a>
+                    <a href="#gallery">Gallery</a>
+
+                </div>
+            </section>
+        <footer> © 2026 SportSphere Schools. All Right Reserved. </footer>
+
+        </div>
+        <script>
+            const studentForm = document.getElementById("studentForm");
+                const userList = document.getElementById("userList");
+
+                const STORAGE_KEY = "sportsphereRegisteredStudents";
+
+                // Get previously registered students from localStorage
+                let students = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+
+                // Function to save students
+                function saveStudents() {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+                }
+
+
+                // Function to display registered students
+                function displayStudents() {
+
+                    userList.innerHTML = "";
+
+                    if (students.length === 0) {
+
+                        const message = document.createElement("p");
+
+                        message.className = "empty-message";
+
+                        message.textContent = "No students have registered yet.";
+
+                        userList.appendChild(message);
+
+                        return;
+                    }
+
+                    students.forEach(student => {
+
+                        const card = document.createElement("div");
+
+                        card.className = "user-card";
+
+                        // Display only public information
+                        [
+                            ["Name", student.name],
+                            ["Class", student.studentClass],
+                            ["Sport Activity", student.course]
+
+                        ].forEach(([label, value]) => {
+
+                            const line = document.createElement("p");
+
+                            line.textContent = `${label}: ${value}`;
+
+                            card.appendChild(line);
+
+                        });
+
+                        userList.appendChild(card);
+
+                    });
+
+                }
+
+
+                // Handle form submission
+                studentForm.addEventListener("submit", function(event) {
+
+                    event.preventDefault();
+
+                    const student = {
+
+                        name: [
+
+                            document.getElementById("surname").value.trim(),
+
+                            document.getElementById("middlename").value.trim(),
+
+                            document.getElementById("firstname").value.trim()
+
+                        ].filter(Boolean).join(" "),
+
+                        email: document.getElementById("email").value.trim(),
+
+                        regNo: document.getElementById("regNo").value.trim(),
+
+                        studentClass: document.getElementById("studentClass").value,
+
+                        course: document.getElementById("course").value
+
+                    };
+
+
+                    // Check for duplicate registration numbers
+                    const duplicate = students.some(existing =>
+
+                        existing.regNo.toLowerCase() === student.regNo.toLowerCase()
+
+                    );
+
+
+                    if (duplicate) {
+
+                        alert("This registration number has already been used on this browser.");
+
+                        return;
+
+                    }
+
+
+                    // Add the new student
+                    students.push(student);
+
+
+                    // Save students
+                    saveStudents();
+
+
+                    // Display registered students
+                    displayStudents();
+
+
+                    // Clear the registration form
+                    studentForm.reset();
+
+
+                    // Display success message
+                    alert("Registration successful! Your name, class and sport activity have been added to the list.");
+
+                });
+
+
+                // Display previously registered students when the page loads
+                displayStudents();
+        </script>
+</body>
+</html>

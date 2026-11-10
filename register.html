@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportSphere Schools</title>
+    <!-- <script src="script.js"></script> -->
+    <style>
+          *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: Arial, Helvetica, sans-serif;  
+        }
+         /* html,body{
+             width: 100%; 
+             overflow-x: hidden; 
+            }
+          */
+         #header{
+           position: sticky; 
+           width: 100%;
+           padding: 10px 0;
+           z-index: 1000; 
+            top: 0; 
+            background: white;
+        }
+           #logo{
+         height: 100px;
+            width: 100px;
+            padding: 10px;
+            /* margin-left: 10px; */
+      }
+        .brand {
+             display: flex;
+             align-items: center;
+             /* text-align: right  ; */
+             justify-content: space-between;
+             gap: 15px;
+             border-bottom: 2px solid #054e96;
+             padding: 0 15px;
+             flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .brand h2{
+            color: #054e96;
+            /* display: block; */
+        }
+         #name{
+            /* width: 50%; */
+            /* display: inline; */
+            text-align: left;
+            /* margin: 0; */
+            /* gap: 90px; */
+            flex: 1;
+        }
+         #sh{
+            /* padding-left: 15px; */
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+            font-style: italic;
+            letter-spacing: 1.5px;
+            /* margin-bottom: 20px;  */
+            display: block;
+         }
+           .nav{
+             display: flex;
+             align-items: center;
+             gap: 20px;
+             /* flex-wrap: wrap; */
+        }
+        .nav a{
+            text-decoration: none;
+            font-weight: 600;
+            color:black;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease ;
+            
+        }
+        .nav a:hover{
+            background:  #4479ad;
+            transform: scale(0.9);
+            color: white;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: calc(100vh - 90px);
+            /* background: #063e75; */
+            padding: 20px;
+             background: #f3f0f0;
+            gap: 24px;
+        }
+        .main-content{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 420px;
+            padding: 15px 20px;
+            /* background: linear-gradient(to right, #063e75, white); */
+            border-radius: 8px;
+            border: 1px solid #4479ad;
+            background: white;
+           
+            /* box-shadow: 0 0 30px #4479ad; */
+
+        }
+        .main-content h2{
+             padding-bottom: 5px;
+            font-size: 20px;
+            color: #054e96;
+            text-align: center;
+        }
+        .main-content p{
+            text-align: center;
+            padding-bottom: 5px;
+            color: black;
+            font-size: 14px;
+        }
+       
+        form{
+            color: #063e75;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            flex-direction: column;
+        }
+        input ,option ,select{
+            padding: 7px 8px;
+            margin:0 0 10px 0 ;
+            border-radius: 5px;
+            border: 1px solid rgb(103, 91, 91);
+            width: 100%;
+        }
+        label{
+            width: 100%;
+             /* margin-top: 6px; */
+            display: block;
+            margin-bottom:2px ;
+            font-size: 13px;
+        }
+        button{
+            display: flex;
+            margin: 12px auto 0 auto;
+            /* text-align: center; */
+            /* margin-left: 300px; */
+            /* margin-top: 10px; */
+            padding: 8px 30px;
+            background: #3f7fc0;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.5s ease 0.1s;
+            cursor: pointer;
+            font-size: 14px;
+            justify-content: center;
+            
+        }
+        button:hover{
+            background: #063e75 ;
+            color: white;   
+        }
+
+
+        /* Registered students section */
+        #registeredStudents {
+            width: 100%;
+            max-width: 700px;
+            margin: 10px auto;
+            padding: 20px;
+            background: white;
+            color: #063e75;
+            border-radius: 8px;
+            border: 1px solid #4479ad;
+            /* box-shadow: 0 0 20px #4479ad; */
+        }
+        #registeredStudents h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #054e96;
+        }
+        #userList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .user-card {
+            padding: 12px;
+            border: 1px solid #b8cde2;
+            border-radius: 6px;
+            background: #f4f8fc;
+            overflow-wrap: anywhere;
+            margin-bottom: 10px;
+        }
+        .user-card p {
+            text-align: left;
+            color: #063e75;
+            padding: 4px 0;
+            font-style: normal;
+        }
+        .empty-message {
+            color: #063e75;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+         .edit-btn, .delete-btn {
+            display: inline-block;
+            width: auto;
+            margin: 5px;
+            padding: 8px 20px;
+        } 
+         .back-link {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            color:#054e96;
+            text-decoration: none;
+            font-weight: 600;
+            /* margin-top: 10px; */
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #registeredStudents {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #header{
+                padding: 0;
+            }
+            .brand{
+                justify-content: center;
+                text-align: center;
+                display: flex;
+                padding: 8px 10px;
+                gap: 0;
+                border-bottom-width: 1px;
+            }
+            #logo{
+                height: 45px;
+                width: 45px;
+                padding: 2px;
+            }
+            #name{
+                text-align: center;
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            #name h2{
+                font-size: 16px;
+                line-height: 1.1;     
+            }
+            #sh{
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+            .nav{
+                 width: 100%;
+                 display: flex;
+                 justify-content: space-between; 
+                gap: 0;
+                margin-top: 8px;
+                border-top: 1px solid #e0e0e0;
+                padding-top: 6px;
+                flex-wrap: nowrap; 
+                overflow-x: auto;
+            }
+            .nav a{
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+            main{
+                align-items: center;
+                padding: 10px ;
+                min-height: calc(100vh - 80px);
+            }
+            .main-content{
+                padding: 20px 15px;
+                max-width: 320px;
+                width: 85%;
+            }
+            form > div {
+                flex-direction: column;
+            }
+            input{
+                min-width: 100%;
+            }
+            
+            }
+
+
+    </style>
+</head>
+<body>
+    <nav id="header">
+        <div class="brand">
+            <img src="schlogo.png" alt="" id="logo">
+            <h2 id="name">SportSphere Schools  <br><small id="sh">Shaping bright futures</small></h2>
+         <div class="nav">
+            <a href="school.html">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#sports">Sports</a>
+            <a href="#contact">Registration</a>
+        </div>
+        </div>
+    </nav>
+    <main>
+        <section class="main-content" id="registrationForm">
+            <h2>Registration Form</h2>
+            <p>Please input valid credentials</p>
+
+            <form id="studentForm">
+
+                <label for="username">Name:</label>
+                <input type="text" id="username" class="name form-control" placeholder="enter your full name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" placeholder="Email" required>
+
+                <input type="password" placeholder="Password" id="password" required>
+
+                <label for="studentClass" class="regno">Class:</label>
+                <select id="studentClass" class="form-control" required>
+                    <option value="">Select your class</option>
+                    <option value="Primary 1">Primary 1</option>
+                    <option value="Primary 2">Primary 2</option>
+                    <option value="Primary 3">Primary 3</option>
+                    <option value="Primary 4">Primary 4</option>
+                    <option value="Primary 5">Primary 5</option>
+                    <option value="Primary 6">Primary 6</option>
+                    <option value="JSS 1">JSS 1</option>
+                    <option value="JSS 2">JSS 2</option>
+                    <option value="JSS 3">JSS 3</option>
+                    <option value="SSS 1">SSS 1</option>
+                    <option value="SSS 2">SSS 2</option>
+                    <option value="SSS 3">SSS 3</option>
+                </select>
+
+                <label for="course" class="regno">Sport Activity:</label>
+                <select id="course" class="form-control" required>
+                    <option value="">Select a sport</option>
+                    <option value="Football">Football</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Volleyball">Volleyball</option>
+                </select>
+
+                <button type="submit" >Submit</button>
+            </form>
+        </section>
+
+        <!-- This new section appears below the registration form, inside main. -->
+        
+        <section id="registeredStudents">
+            <h2 >Registered Students</h2>
+            <p class="empty-message">Public information: name, class and sport activity only.</p>
+            <div id="userList">
+                <p class="empty-message">No students have registered yet.</p>
+            </div>
+            <p id="message"></p>
+        </section>
+
+        <a href="admin-login.html" class="back-link">Admin Login</a>
+        
+    </main>
+        <script>
+            // GET HTML ELEMENTS
+            const studentForm = document.getElementById("studentForm");
+            const userList = document.getElementById("userList");
+            const message = document.getElementById("message");
+
+            // STORAGE KEY
+            const STORAGE_KEY = "sportsphereStudents";
+
+
+            // WHEN A STUDENT SUBMITS THE FORM
+            studentForm.addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                // GET STUDENT DETAILS
+                const student = {
+                    id: Date.now(),
+
+                    name: document.getElementById("username").value.trim(),
+
+                    email: document.getElementById("email").value.trim(),
+
+                    studentClass: document.getElementById("studentClass").value,
+
+                    course: document.getElementById("course").value
+                };
+
+
+                // GET EXISTING STUDENTS
+                let students = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+
+                // SAVE STUDENT DETAILS FOR ADMINISTRATOR
+                students.push(student);
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+
+
+                // REMOVE PREVIOUS STUDENT DISPLAY
+                userList.innerHTML = "";
+
+
+                // CREATE STUDENT BOX
+                const studentBox = document.createElement("div");
+
+                studentBox.className = "user-card";
+
+
+                studentBox.innerHTML = `
+                    <p><strong>Name:</strong> ${escapeHTML(student.name)}</p>
+
+                    <p><strong>Email:</strong> ${escapeHTML(student.email)}</p>
+
+                    <p><strong>Class:</strong> ${escapeHTML(student.studentClass)}</p>
+
+                    <p><strong>Sport Activity:</strong> ${escapeHTML(student.course)}</p>
+                `;
+
+
+                // DISPLAY STUDENT BOX
+                userList.appendChild(studentBox);
+
+
+                // SUCCESS MESSAGE
+                message.textContent = "Registration successful!";
+
+
+                // CLEAR FORM
+                studentForm.reset();
+
+            });
+
+
+            // PREVENT HTML INJECTION
+            function escapeHTML(value) {
+
+                return String(value).replace(/[&<>"']/g, function(character) {
+
+                    return {
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#039;"
+                    }[character];
+
+                });
+
+            }
+        </script>
+</body>
+</html>
